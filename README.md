@@ -55,8 +55,17 @@ to
 
 
 ### make sure there are 6 screen sessions
+```
 screen -list
-10873.mycroft-voice     (08/27/2017 03:02:02 PM)        (Detached)
+
+10552.mycroft-cli       (08/27/2017 05:01:14 PM)        (Detached)
+10533.mycroft-voice     (08/27/2017 05:01:14 PM)        (Detached)
+10488.mycroft-display   (08/27/2017 05:01:14 PM)        (Detached)
+10469.mycroft-audio     (08/27/2017 05:01:14 PM)        (Detached)
+10452.mycroft-skills    (08/27/2017 05:01:13 PM)        (Detached)
+10437.mycroft-service   (08/27/2017 05:01:13 PM)        (Detached)
+```
+
 screen -r 10873 - voice log
 also useful - skills log
 troubleshoot: ./start.sh audio
