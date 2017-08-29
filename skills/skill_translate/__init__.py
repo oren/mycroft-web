@@ -24,6 +24,18 @@ __author__ = 'oren'
 
 LOGGER = getLogger(__name__)
 
+def translate(word):
+    word = word.strip()
+    # call some API for translating a word to chinese
+    if word == 'hi':
+        output = 'hi'
+    if word == 'hello':
+        output = 'hello'
+    else:
+        output = 'zaijian'
+
+    return output
+
 
 class TranslateSkill(MycroftSkill):
     def __init__(self):
@@ -31,13 +43,17 @@ class TranslateSkill(MycroftSkill):
 
     def initialize(self):
         translate_intent = IntentBuilder("TranslateIntent"). \
-            require("TranslateKeyword").build()
+            require("TranslateKeyword").optionally("Word").build()
         self.register_intent(translate_intent,
                              self.handle_translate_intent)
 
     def handle_translate_intent(self, message):
-        # self.speak_dialog("translate")
-        self.speak("ni hao", metadata={"url":"http:://foo.com"})
+        word = message.data["Word"]
+        print("----------------------")
+        print(word)
+        print("----------------------")
+        word = translate(word)
+        self.speak(word, metadata={"url":"http:://foo.com"})
 
     def stop(self):
         pass
